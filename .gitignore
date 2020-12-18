@@ -1,0 +1,4 @@
+.flaskenv
+venv
+*.pyc
+.vscode
