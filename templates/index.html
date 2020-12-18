@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>reCaptcha Demo</title>
+    <style>
+        label, input, button { margin: 5px; }
+    </style>
+</head>
+<body>
+    <form id="my-form" action="{{ url_for('postform') }}" method="post">
+        <label for="username">username</label> <input type="text" name="username" id="username">
+        <br>
+        <label for="email">email</label> <input type="email" name="email" id="email">
+
+        <!-- Documentation https://developers.google.com/recaptcha/docs/v3 -->
+        <button class="g-recaptcha" 
+            data-sitekey="{{ RECAPTCHA_SITE_KEY }}" 
+            data-callback='onSubmit' 
+            data-action='submit'>Send Info</button>
+    </form>
+    <script src="https://www.google.com/recaptcha/api.js"></script>
+    <script>
+        function onSubmit(token) {
+            /* simply calling .submit() on the form will prevent 
+             * HTML5-form validation.*/
+            const myForm = document.getElementById("my-form");
+            if (myForm.reportValidity()) {
+                myForm.submit();
+            } else {
+                console.warn("Form validation failed");
+            }
+        }
+    </script>
+</body>
+</html>
