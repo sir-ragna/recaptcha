@@ -63,7 +63,8 @@ In Firefox the using the IPv4 embed in IPv6 method the reCaptcha seems to break.
 
 How to reproduce:
 
-- Make sure you have `127.0.0.1` in your captcha list
+- Make sure you have `127.0.0.1` in the domains list managed on https://www.google.com/recaptcha/admin/
+  * I have **Verify the origin of reCAPTCHA solutions** checked.
 - Start your server with both IPv4 and IPv6 support `flask run --host=::`
 - Embed `127.0.0.1` in your IPv6 address and browse to `http://[::ffff:7f00:1]:5000/`
 - Click on the submit button
