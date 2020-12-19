@@ -41,3 +41,19 @@ Activate the virtual environment and run flask.
 source venv/bin/activate
 flask run
 ```
+
+To enable IPv6 listening on IPv6 use `--host=::1` for localhost only.
+Use `--host=::` to enable everyone to contact you both over IPv4 and IPv6.
+
+```sh
+flask run --host=::
+```
+
+When someone connects over IPv4 the address will be prefixed with `::FFFF:`.
+For example:
+
+```log
+::ffff:127.0.0.1 - - [19/Dec/2020 10:10:48] "GET / HTTP/1.1" 200 -
+::ffff:127.0.0.1 - - [19/Dec/2020 10:10:48] "GET /favicon.ico HTTP/1.1" 404 -
+```
+
